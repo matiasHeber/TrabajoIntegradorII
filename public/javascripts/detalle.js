@@ -133,7 +133,7 @@ fetch("https://api.themoviedb.org/3/movie/"+idPelicula+"/recommendations?api_key
     console.log(peliculas);
 
     for (var i = 0; i < peliculas.length; i++) {
-      document.querySelector(".contenedor-recomendados").innerHTML += '<li><div class="uk-panel"><a href="detalle.html?idPelicula='+peliculas[i].id+'"><img src="https://image.tmdb.org/t/p/original/' + peliculas[i].poster_path + '" alt=""></a><div class="uk-position-center uk-panel"><h1></h1></div></div></li>'
+      document.querySelector(".contenedor-recomendados").innerHTML += '<li><div class="uk-panel"><a href="/detalle?idPelicula='+peliculas[i].id+'"><img src="https://image.tmdb.org/t/p/original/' + peliculas[i].poster_path + '" alt=""></a><div class="uk-position-center uk-panel"><h1></h1></div></div></li>'
     }
   })
 /*NUEVA API*/
