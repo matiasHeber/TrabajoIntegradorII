@@ -20,11 +20,15 @@
     <%- include('partials/header') %>
 
     <div class="uk-container uk-container-small">
-        <div class="uk-section uk-section-small uk-flex uk-flex-center">
+        <div class="uk-section uk-section-xlarge uk-flex uk-flex-center">
             <ul style="list-style: none;">
                 <% for(let i = 0; i < listado.length; i++){ %>
-                    <li>
-                        Username: <%= listado[i].username %>
+                    <li class="">
+                        <div class="uk-card uk-card-body">
+                            <h4 class="uk-card-title">User <%= listado[i].id %> </h4>
+                            <p> Username: <%= listado[i].username %> </p>
+                            <p>Email: <%= listado[i].email %></p>
+                        </div>
                     </li> 
                 <% } %> 
             </ul>
