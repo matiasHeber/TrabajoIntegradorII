@@ -79,13 +79,32 @@ ALTER TABLE `users`
 ALTER TABLE `comments`
   MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `comments`  AUTO_INCREMENT = 1;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `users`  AUTO_INCREMENT = 1;
+
+
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- INSERT INTO users VALUES 
+-- (DEFAULT, "mati", "matiCat@mail.com", "mati123", NOW(), NOW()),
+-- (DEFAULT, "gonza", "gonzaCat@mail.com", "gonza123", NOW(), NOW()),
+-- (DEFAULT, "batman", "brunoDiaz@mail.com", "baticontraseña", NOW(), NOW()),
+-- (DEFAULT, "tuvieja", "tuvieja@mail.com", "tumama123", NOW(), NOW()),
+-- (DEFAULT, "momo", "momoTheCat@mail.com", "momo", NOW(), NOW()),
+-- (DEFAULT, "pampa", "pampaTheDog@mail.com", "pampita", NOW(), NOW()),
+-- (DEFAULT, "luisa", "luisaLane@mail.com", "superman<3", NOW(), NOW()),
+-- (DEFAULT, "TommyShelby", "theBoss@mail.com", "grace", NOW(), NOW()),
+-- (DEFAULT, "Arthur", "giveMeWhisky@mail.com", "mate", NOW(), NOW()),
+-- (DEFAULT, "John", "johnnyBoy@mail.com", "peakyboy", NOW(), NOW());
+
+
+
+-- ROMPIA si dejo esto asi que lo traje al fondo.... rechequear

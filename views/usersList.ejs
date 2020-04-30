@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Playit</title>
+    <link rel="stylesheet" href="/stylesheets/uikit.min.css" />
+    <link rel='stylesheet' href='/stylesheets/home.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+        integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="topnav">
+        <!-- Aca aparece el nombre del usuario SOLO SI SE REGISTRA -->
+
+    </div>
+    <!-- HEADER -->
+
+    <%- include('partials/header') %>
+
+    <div class="uk-container uk-container-small">
+        <div class="uk-section uk-section-small uk-flex uk-flex-center">
+            <ul style="list-style: none;">
+                <% for(let i = 0; i < listado.length; i++){ %>
+                    <li>
+                        Username: <%= listado[i].username %>
+                    </li> 
+                <% } %> 
+            </ul>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <%- include('partials/footer') %>
+
+    <script rel="stylesheet" src="/javascripts/home.js"></script>
+</body>
+
+</html>
