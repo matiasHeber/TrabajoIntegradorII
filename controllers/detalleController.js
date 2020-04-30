@@ -1,6 +1,6 @@
 const detalleController = {
     findByPk: function (req,res){
-        res.render('detalle', { })
+        res.render('detalle', { dato: req.query.idPelicula })
     }
 }
 
