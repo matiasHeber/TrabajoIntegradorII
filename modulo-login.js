@@ -1,7 +1,7 @@
 let db = require('./database/models')
 
 let moduloLogin = {
-    buscarPorEmail: function (email) {
+    chequearUsuario: function (email) {
         return db.Usuario.findOne({
             where: {
                 email: email
@@ -10,6 +10,21 @@ let moduloLogin = {
         .then(function(usuario) {
             return usuario != null;
         })
+    },
+
+    buscarPorEmail: function (email){
+        return db.Usuario.findOne({
+            where: {
+                email:email
+            }
+        })
+        .then(resultado=> {
+            return resultado
+        })
+    },
+
+    validar: function (email, pass) {
+        
     }
 }
 

@@ -18,7 +18,7 @@ let usersController = {
     },
 
     buscar: function (req,res) {
-        moduloLogin.buscarPorEmail(req.query.email)
+        moduloLogin.chequearUsuario(req.query.email)
         .then (resultado =>{
             res.send(resultado)
         })
@@ -39,7 +39,7 @@ let usersController = {
             console.log(req.body.email, resultado == undefined);
             
             if(resultado != undefined){
-               return res.render('registerError', {error: "Mail already taken..."})
+               return res.render('registerError', {error: "Email already taken..."})
             }else{
                 db.Usuario.create(user)
                 return res.redirect('/')

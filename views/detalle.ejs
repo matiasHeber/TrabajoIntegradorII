@@ -29,7 +29,7 @@
 
 <ul uk-accordion>
 
-  <li>
+  <li id="scroll">
           <a class="uk-accordion-title" href="#">INFORMATION</a>
           <div class="uk-accordion-content">
             <p class="lenguaje">
@@ -59,28 +59,44 @@
         </div>
     </li>
 </ul>
-
 <div class="uk-container uk-container-small uk-card uk-card-secondary">
-    <form action="" method="POST">
+  <form action="/detalle/review/<%= dato %>"  method="POST">
+    <div class="uk-margin">
+      <label for="resena" class="uk-form-width-medium uk-label uk-margin-top">Email</label>
+      <% if (error) { %>
+        <p class="uk-text-danger">Usuario no registrado</p>
+        <input type="text" id="resena" class="uk-input uk-form-danger uk-form-width-large uk-margin-small" placeholder="ragnar@vikings.com" name="email">
+      <% } else { %>
+        <input type="text" id="resena" class="uk-textarea uk-form-width-large uk-margin-small" placeholder="ragnar@vikings.com" name="email">
+      <% } %>
+          
+      </div>
       <div class="uk-margin">
-        <label for="resena" class="uk-form-large uk-label">Leave a review</label>
-        <input type="text" id="resena" class="uk-textarea uk-form-large uk-margin-small" placeholder="Here...">
+        <label for="resena" class="uk-form-width-medium uk-label uk-margin-top">Deja tu comentario</label>
+        <input type="text" id="resena" class="uk-textarea uk-form-width-large uk-margin-small" placeholder="Here..." name="resena">
+      </div>
+      <div class="uk-margin">
+        <label for="resena" class="uk-form-width-medium uk-label uk-margin-bottom">Puntaje:</label>
+        <input type="range" id="points" name="puntaje" class="uk-range" min="0" max="10"  onchange="updateValue(this.value)">
+        <p id="valorRange" class="uk-text-secondary">5</p>
       </div>
       <button type="submit" class="uk-button uk-button">Post</button>
     </form>
 </div>
 
 <div class="uk-section">
-  <div class="uk-container uk-flex uk-flex-column uk-flex-middle">
+  <h3 class="uk-text-center">Otras reseñanas</h3>
+  <div class="uk-container uk-flex uk-flex-column uk-flex-middle uk-child-width-2-3 uk-background-secondary uk-padding">
 
     
     <% for( let i = 0; i < resenas.length; i++ ) { %>
-      <div class="uk-card uk-card-large uk-card-default uk-card-body  uk-margin-bottom">
+      <div class="uk-card uk-card-large uk-card-default uk-card-body uk-margin-bottom">
         <div class="uk-card-badge uk-label"> Puntaje: <%= resenas[i].puntaje %> </div>
         <h4 class="uk-card-title uk-margin-top"> Usuario: <%= resenas[i].usuario.name %>  </h4>
         <p> <%= resenas[i].resena %>  </p>
       </div>
     <% } %>
+      <div id="lastReview"></div>
  
    
   </div>
@@ -98,5 +114,11 @@
     <script src="/javascripts/uikit-icons.min.js"></script>
     <script src="/javascripts/uikit-icons.js"></script>
     <script src="/javascripts/uikit.js"></script>
+
+    <script>
+      function updateValue(val) {
+        document.querySelector('#valorRange').innerHTML = val
+      }
+    </script>
   </body>
 </html>

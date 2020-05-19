@@ -13,8 +13,27 @@ const detalleController = {
             ]
         })
         .then(resultados => {
-            // res.send(resultados)
-            res.render('detalle', { dato: req.query.idPelicula, resenas: resultados});
+            res.render('detalle', { dato: req.query.idPelicula, resenas: resultados, error: req.params.error});
+        })
+    },
+
+    agregarResena: function (req,res) {
+        moduloLogin.buscarPorEmail(req.body.email)
+        .then(resultado=>{
+            if(resultado != undefined){
+                let review = {
+                    pelicula_id: req.params.id,
+                    usuario_id: resultado.id,
+                    resena: req.body.resena,
+                    puntaje: req.body.puntaje
+                }
+                
+                db.Resena.create(review)
+                res.redirect('/detalle/?idPelicula=' + req.params.id + '#lastReview')
+            }else{
+                res.redirect('/detalle/true/?idPelicula='+req.params.id+'#scroll')
+            }
+
         })
     }
 }
