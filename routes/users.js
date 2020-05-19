@@ -6,4 +6,9 @@ const usersController = require('../controllers/usersController')
 // router.get('/',usersController.search);
 router.get('/list',usersController.getAll);
 
+router.get('/buscar', usersController.buscar)
+
+router.post('/register', usersController.register)
+
+
 module.exports = router;

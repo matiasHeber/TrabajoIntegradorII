@@ -9,14 +9,14 @@
         <a href="/generos">Genre</a> <!-- Link a la pagina Genero -->
         <a href="/generos#movies">Movies</a> <!-- Link a la pagina Peliculas -->
         <a href="/buscador">Search</a> <!-- Link a la pagina Busqueda -->
-        <a class="favorite" style="display: none;" href="/favoritos">Favorite</a>
+        <a class="favorite" href="/favoritos">Favorite</a>
         <!-- Link a la pagina Favoritos -->
     </div>
 
     <div class="login">
         <!-- Dentro del div esta el link para logearse y el buscador -->
         <span id="user2">
-            <i class="fas fa-user"></i>
+            <i uk-icon="icon: user"></i>
             <p style="display:none; font-size: 20px;"></p>
         </span>
 
@@ -62,37 +62,33 @@
         <span style="font-size: 5rem;">
             <i class="far fa-user"></i>
         </span>
-        <p>Log In</p>
+        <p>Register</p>
 
-        <form id="formlogin" action="">
+        <form id="formlogin" method="POST" action="/users/register">
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-                    <input class="uk-input" type="text" id="name">
+                    <input class="uk-input" type="text" id="name" name="username" placeholder="username...">
                 </div>
             </div>
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                    <input class="uk-input" type="text" id="email">
+                    <input class="uk-input" type="text" id="email" name="email" placeholder="email...">
                 </div>
             </div>
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-2-3">
-
-                    <select class="uk-select" id="genero">
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Undefined</option>
-                    </select>
+                    <span class="uk-form-icon" uk-icon="icon: pencil"></span>
+                    <input class="uk-input" type="password" id="pass" name="password" placeholder="password...">
                 </div>
             </div>
 
 
-            <button type="submit" name="button">Subscribe</button>
+            <button type="submit" name="button">GO!</button>
 
         </form>
     </div>

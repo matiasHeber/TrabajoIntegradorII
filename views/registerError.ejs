@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/uikit.min.css" />
+    <link rel="stylesheet" href="/stylesheets/detalle.css">
+    <title>Register</title>
+
+</head>
+
+<body>
+
+    <!-- Header-->
+    <%- include('partials/header') %>
+
+
+    <div class="uk-container uk-container-large">
+        <div class="uk-section uk-section-large">
+            <h1>An error ocurred during register:</h1>
+            <h3>Error: <%= error %> </h3>
+
+            <h3>Please try again....</h3>
+        </div>
+    </div>
+
+
+
+    <!-- Footer-->
+    <%- include('partials/footer') %>
+
+
+
+    <script rel="stylesheet" src="/javascripts/detalle.js"></script>
+    <script src="/javascripts/uikit.min.js"></script>
+    <script src="/javascripts/uikit-icons.min.js"></script>
+    <script src="/javascripts/uikit-icons.js"></script>
+    <script src="/javascripts/uikit.js"></script>
+</body>
+
+</html>
