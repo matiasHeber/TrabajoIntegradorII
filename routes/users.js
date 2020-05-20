@@ -6,9 +6,17 @@ const usersController = require('../controllers/usersController')
 // router.get('/',usersController.search);
 router.get('/list',usersController.getAll);
 
-router.get('/buscar', usersController.buscar)
+router.get('/reviews', usersController.logUser);
 
-router.post('/register', usersController.register)
+router.post('/reviews', usersController.confirmUser);
+
+router.get('/reviews/:id', usersController.getReviews);
+
+router.get('/reviews/edit/:id', usersController.showEdit);
+
+router.get('/buscar', usersController.buscar);
+
+router.post('/register', usersController.register);
 
 
 module.exports = router;

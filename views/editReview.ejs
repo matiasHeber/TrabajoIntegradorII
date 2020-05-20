@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/uikit.min.css" />
+    <script src="/javascripts/uikit.min.js"></script>
+    <script src="/javascripts/uikit-icons.min.js"></script>
+    <script src="/javascripts/uikit-icons.js"></script>
+    <script src="/javascripts/uikit.js"></script>
+    <link rel="stylesheet" href="/stylesheets/favoritos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+        integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- Header-->
+    <%- include('partials/header') %>
+
+    <div class="uk-container ">
+        <div class="uk-section uk-section-large ">
+
+            <form id="formlogin" method="POST" class="uk-background-secondary uk-padding uk-padding-large"
+                action="/users/reviews/edit/<%= resultado.id %> ">
+                <h1 style="color:white">Edit review</h1>
+
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-2-3">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input class="uk-input" type="text" id="email" name="email" placeholder="email...">
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-2-3">
+                        <span class="uk-form-icon" uk-icon="icon: pencil"></span>
+                        <input class="uk-input" type="password" id="pass" name="password" placeholder="password...">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-2-3">
+                        <label for="resena">Review</label>
+                        <textarea class="uk-textarea" value="" cols="50" rows="3"  name="resena" id="resena"><%= resultado.resena %></textarea>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="resena" class="uk-form-width-medium uk-label uk-margin-bottom">Puntaje:</label>
+                    <input type="range" id="points" name="puntaje" class="uk-range" min="0" max="10" onchange="updateValue(this.value)">
+                    <p id="valorRange" style="color: white;"><%= resultado.puntaje %> </p>
+                </div>
+
+                
+
+                <button type="submit" name="button">GO!</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- Footer-->
+
+    <%- include('partials/footer') %>
+
+
+    <!-- Footer-->
+
+    <script src="/javascripts/uikit.min.js"></script>
+    <script src="/javascripts/uikit-icons.min.js"></script>
+    <script src="/javascripts/uikit-icons.js"></script>
+    <script src="/javascripts/uikit.js"></script>
+
+        <script>
+            function updateValue(val) {
+                document.querySelector('#valorRange').innerHTML = val
+            }
+        </script>
+</body>
+
+</html>

@@ -24,7 +24,15 @@ let moduloLogin = {
     },
 
     validar: function (email, pass) {
-        
+        return db.Usuario.findOne({
+            where:{
+                email:email,
+                password: pass
+            },
+        })
+        .then(results=>{
+            return results;
+        })
     }
 }
 

@@ -47,6 +47,48 @@ let usersController = {
         })
     },
 
+    logUser: function (req, res) {
+        res.render('login', { error: "" });
+    },
+
+    confirmUser: function (req, res) {
+        moduloLogin.validar(req.body.email, req.body.password)
+        .then(resultado=>{
+            if(resultado == undefined){
+                res.redirect('/users/login')
+            }else{
+                res.redirect('/users/reviews/'+resultado.id)
+            }
+        })
+    },
+
+    getReviews: function (req,res) {
+        db.Resena.findAll({
+            where: [
+                {usuario_id: req.params.id}
+            ],
+            include: [
+                { association: "usuario" }
+            ]
+        })
+        .then(resultado=>{
+            console.log(resultado);
+            
+            res.render('reviews',{resultado:resultado})
+        })
+    },
+
+    showEdit: function (req,res){
+        db.Resena.findOne({
+            where: [
+                {id: req.params.id}
+            ]
+        })
+        .then(resultado =>{
+            res.render('editReview', {resultado: resultado})
+        })
+    }
+
 }
 
 module.exports = usersController;
