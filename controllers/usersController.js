@@ -1,6 +1,7 @@
-let db = require('../database/models')
-let op = db.Sequelize.Op
-let moduloLogin = require('../modulo-login')
+let db = require('../database/models');
+let op = db.Sequelize.Op;
+let moduloLogin = require('../modulo-login');
+let bcrypt = require('bcryptjs');
 
 
 let usersController = {
@@ -25,10 +26,13 @@ let usersController = {
     },
     
     register: function (req,res) {
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(req.body.password, salt);
+
         let user = {
             name: req.body.username,
             email: req.body.email,
-            password: req.body.password
+            password: hash
         }
         db.Usuario.findAll({
             where:[
