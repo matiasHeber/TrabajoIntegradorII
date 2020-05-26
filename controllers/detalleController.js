@@ -18,7 +18,7 @@ const detalleController = {
     },
 
     agregarResena: function (req,res) {
-        moduloLogin.buscarPorEmail(req.body.email)
+        moduloLogin.validar(req.body.email, req.body.password)
         .then(resultado=>{
             if(resultado != undefined){
                 let review = {

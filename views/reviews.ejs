@@ -19,21 +19,30 @@
         <div  class="uk-container " >
           <div class="uk-section uk-section-large ">
 
-            <h1 class="uk-text-center"> <%= resultado[0].usuario.name %>'s reviews </h1>
+            
+            <% if (resultado.length == 0) { %>
+              <h1>You havent made any reviews yet....</h1>
 
-            <% for( let i = 0; i < resultado.length; i++ ) { %>
-                <div class="uk-card uk-card-secondary uk-margin ">
-                  <div class="uk-card-badge uk-label uk-margin-bottom"> Puntaje: <%= resultado[i].puntaje %> </div>
-                  <div class="uk-card-body ">
-                    <h4 class="uk-margin-top"><%= resultado[i].resena %></h4>
-                  </div>
-                  <div class="uk-card-footer uk-flex uk-flex-between">
-                    <a href="/detalle?idPelicula=<%= resultado[i].pelicula_id %> "> Ver en pelicula</a>
-                    <a href="/users/reviews/edit/<%= resultado[i].id %>">Editar</a>
-                  </div>
-                </div>
-            <% } %>
+              <% } else { %>
+                <h1 class="uk-text-center"> <%= resultado[0].usuario.name %>'s reviews </h1>
                 
+
+                
+                <% for( let i = 0; i < resultado.length; i++ ) { %>
+                  <div class="uk-card uk-card-secondary uk-margin ">
+                    <div class="uk-card-badge uk-label uk-margin-bottom" style="color: white;"> Score: <%= resultado[i].puntaje %> </div>
+                    <div class="uk-card-body ">
+                      <h4 class="uk-margin-top"><%= resultado[i].resena %></h4>
+                    </div>
+                    <div class="uk-card-footer uk-flex uk-flex-between">
+                      <a class="uk-text-success" href="/users/reviews/edit/<%= resultado[i].id %>">Edit</a>
+                      <a class="uk-text-primary" href="/detalle?idPelicula=<%= resultado[i].pelicula_id %> "> Go to movie</a>
+                      <a class="uk-text-danger" href="/users/reviews/delete/<%= resultado[i].id %>">Delete</a>
+                    </div>
+                  </div>
+                  <% } %>
+                  
+              <% } %>
 
 
           </div>

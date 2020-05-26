@@ -11,7 +11,7 @@ let usersController = {
             ]
         })
             .then(results => {
-                return res.send(results)
+                // return res.send(results)
                 let listado = results[0]
                 res.render('usersList', { listado: listado });
             })
@@ -38,7 +38,7 @@ let usersController = {
         .then(resultado =>{
             console.log(req.body.email, resultado == undefined);
             
-            if(resultado != undefined){
+            if(resultado == undefined){
                return res.render('registerError', {error: "Email already taken..."})
             }else{
                 db.Usuario.create(user)
@@ -48,15 +48,16 @@ let usersController = {
     },
 
     logUser: function (req, res) {
-        res.render('login', { error: "" });
+        res.render('login', { tipo: "log" });
     },
 
     confirmUser: function (req, res) {
         moduloLogin.validar(req.body.email, req.body.password)
         .then(resultado=>{
             if(resultado == undefined){
-                res.redirect('/users/login')
+                res.redirect('/users/reviews')
             }else{
+                console.log(resultado.id);
                 res.redirect('/users/reviews/'+resultado.id)
             }
         })
@@ -87,7 +88,51 @@ let usersController = {
         .then(resultado =>{
             res.render('editReview', {resultado: resultado})
         })
-    }
+    },
+
+    confirmEdit: function (req, res) {
+        console.log(req.params.id);
+        let updateR = {
+            resena: req.body.resena,
+            puntaje: req.body.puntaje,
+            id: req.params.id
+        }
+
+        db.Resena.update({
+            resena: updateR.resena,
+            puntaje: updateR.puntaje
+        },{
+            where: {
+                id: updateR.id,      
+            }
+        } 
+        ).then(()=>{
+            db.Resena.findByPk(req.params.id)
+            .then(resultado =>{  
+                res.redirect('/users/reviews/'+resultado.usuario_id)
+            })
+        })
+    },
+
+    deleteReview: function (req,res) {
+        res.render('login', { tipo: "delete", deleteId: req.params.id})
+    },
+
+    confirmDelete: function (req,res) {
+        moduloLogin.validar(req.body.email, req.body.password)
+        .then(resultado =>{
+            if (resultado != null) {
+                db.Resena.destroy({
+                    where: {
+                        id: req.params.id,
+                    }
+                })
+                res.redirect('/users/reviews/')
+            }else{
+                res.redirect('/users/reviews/delete/'+ req.params.id)
+            }
+        })
+    },
 
 }
 
