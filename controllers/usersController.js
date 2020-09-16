@@ -62,6 +62,7 @@ let usersController = {
                 res.redirect('/users/reviews')
             }else{
                 console.log(resultado.id);
+                // res.render('reviews', { resultado: [] })
                 res.redirect('/users/reviews/'+resultado.id)
             }
         })
